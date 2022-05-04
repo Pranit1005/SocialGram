@@ -1,0 +1,21 @@
+{% load static %}
+{% include "partials/header.html" %}
+
+    <form action="/add_post/" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <div class="container border p-5 text-center mt-5" >
+            <div>
+                <input type="file" name="poster" required>
+            </div><br>
+            <br>
+            <div>
+                <textarea name="description" placeholder="description" required></textarea>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+{% include "partials/footer.html" %}
+

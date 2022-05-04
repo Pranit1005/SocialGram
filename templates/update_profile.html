@@ -1,0 +1,42 @@
+{% load static %}
+{% include "partials/header.html" %}
+
+<form action="/user/update_profile/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container" style="text-align:center">
+
+        <h1>{{ userinfo.username }}</h1>
+        <img src="{% static userdetail.profile_picture %} " style="height:40%; width:40%; margin-bottom:20px">
+        <div >
+
+            <h2>
+                <label>Name</label>
+                <input type="text" name="first_name" value="{{ userinfo.first_name }}">
+                <input type="text" name="last_name" value="{{ userinfo.last_name }}">
+            </h2>
+            <h2>
+            <label>Change Profile Picture</label>
+            <input type="file" name="profile_picture" >
+            </h2>
+            <h2>
+                <label>Password</label>
+                <input type="text" name="password" value="{{ userinfo.password }}">
+            </h2>
+            <h2>
+                <label>Email</label>
+                <input type="text" name="email" value="{{ userinfo.email }}">
+            </h2>
+            <h2>
+                <label>Mobile</label>
+                <input type="text" name="mobile" value="{{ userdetail.mobile }}">
+            </h2>
+
+        </div>
+        <button type="submit">Submit</button>
+    </div>
+
+</form>
+
+
+
+{% include "partials/footer.html" %}

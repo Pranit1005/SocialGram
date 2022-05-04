@@ -1,0 +1,40 @@
+{% load static %}
+{% include "partials/header.html" %}
+
+    <div style="text-align:center">
+    <div class="container" style="text-align:center">
+    <h1>My Account <a href="/user/update_profile" ><img style="height: 20px; width:20px;" src="{% static 'imgs/edit_user.png' %}" alt="Edit" title="Edit"/></a></h1>
+
+        {% if userdetail.profile_picture %}
+        <img src="{% static userdetail.profile_picture %} " style="height:40%; width:40%; border-radius:10em;">
+
+
+        {% elif not userdetail.profile_picture %}
+        <img src="{% static 'imgs/usericonblue.png' %} " style="height:40%; width:40%; border-radius:10em;">
+        {% endif %}
+        <div>
+            <h1>{{ userinfo.username }}</h1>
+        </div>
+    </div>
+
+     <div class="container" style="text-align:center;">
+            <div class="row mt-2 custom_container_post" >
+                {% for post in posts %}
+
+                    <div class="card mt-2" >
+                        <a href="#">
+                        <img class="card-img  mt-2" src="{% static post.poster %}">
+                        </a>
+                        <p class="card-text mb-3 mx3">{{ post.description }} </p>
+                        <form action="/delete_post/" method="POST">
+                            {% csrf_token %}
+                            <input name="post_details" hidden value="{{ post.id }}">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+
+     </div>
+        </div>
+{% include "partials/footer.html" %}

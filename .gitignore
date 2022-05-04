@@ -1,0 +1,5 @@
+/venv
+static/posts
+static/profiles
+static/imgs
+db.sqlite3
